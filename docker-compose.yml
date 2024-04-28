@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./my-app111
+    image: project
+    ports:
+      - "3000:3000"
+    container_name: front-container
+
+  backend:
+    build: ./server
+    image: projectback
+    ports:
+      - "3005:3005"
+    container_name: back-container
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3009:3009"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    container_name: mysqldb
+
+volumes:
+  mainvol:
